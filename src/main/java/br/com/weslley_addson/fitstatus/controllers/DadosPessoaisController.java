@@ -1,9 +1,9 @@
 package br.com.weslley_addson.fitstatus.controllers;
 
-import br.com.weslley_addson.fitstatus.services.DadosPessoaisService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.com.weslley_addson.fitstatus.services.DadosPessoaisService;
 
 @RestController
 @RequestMapping("/dados_pessoais")

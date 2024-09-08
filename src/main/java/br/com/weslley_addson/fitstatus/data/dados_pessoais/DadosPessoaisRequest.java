@@ -1,9 +1,8 @@
 package br.com.weslley_addson.fitstatus.data.dados_pessoais;
 
-import br.com.weslley_addson.fitstatus.models.DadosPessoais;
-import br.com.weslley_addson.fitstatus.models.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
+import br.com.weslley_addson.fitstatus.models.DadosPessoais;
 
 public record DadosPessoaisRequest(String nomeCompleto, double peso, int altura, double cintura,
                                    double quadril, double bracos, double coxas, double dobraCutanea,
