@@ -9,6 +9,9 @@ public class DadosPessoais {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true)
+    private Long userId;
+
     private String nomeCompleto;
     private double peso;
     private int altura;
@@ -22,6 +25,10 @@ public class DadosPessoais {
     public DadosPessoais() {
     }
 
+    public DadosPessoais(Long userId) {
+        this.userId = userId;
+    }
+
     public DadosPessoais(String nomeCompleto, double peso, int altura, double cintura, double quadril, double bracos,
                          double coxas, double dobraCutanea, double pressaoArterial) {
     }
@@ -32,6 +39,14 @@ public class DadosPessoais {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long authUserId) {
+        this.userId = authUserId;
     }
 
     public String getNomeCompleto() {
