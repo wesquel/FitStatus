@@ -1,9 +1,8 @@
 package br.com.weslley_addson.fitstatus.services;
 
-import br.com.weslley_addson.fitstatus.data.user.UserResponse;
+import br.com.weslley_addson.fitstatus.exception.BusinessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -48,20 +47,16 @@ public class DadosPessoaisService {
 
     }
 
-    public ResponseEntity<?> createDadosPessoais(Long userId) {
+    public DadosPessoais createDadosPessoais(Long userId) {
         var dadosPessoaisFind = dadosPessoaisRepository.findByUserId(userId);
 
-        if(dadosPessoaisFind.isPresent()) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("User already exist!");
+        if (dadosPessoaisFind.isPresent()) {
+            throw new BusinessException("User already exists!");
         }
 
         DadosPessoais dadosPessoais = new DadosPessoais(userId);
         dadosPessoais.setNomeCompleto("");
-        DadosPessoais dadosPessoaisSave = dadosPessoaisRepository.save(dadosPessoais);
-
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(DadosPessoaisResponse.fromDadosPessoais(dadosPessoaisSave));
-
+        return dadosPessoaisRepository.save(dadosPessoais);
     }
 
 }
