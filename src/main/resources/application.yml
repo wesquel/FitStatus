@@ -1,3 +1,5 @@
+App:
+  id: 1
 spring:
   application:
     name: FitStatus
